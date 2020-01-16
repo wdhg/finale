@@ -1,8 +1,8 @@
-name:                interlude
+name:                finale
 version:             0.1.0.0
--- synopsis:
--- description:
-homepage:            https://github.com/wdhg/interlude#readme
+synopsis:            A custom extension of the standard Prelude module.
+description:         Finale is a custom extension to the Prelude of functions that I wish existed in it.
+homepage:            https://github.com/wdhg/finale#readme
 license:             BSD3
 license-file:        LICENSE
 author:              wdhg
@@ -14,13 +14,13 @@ source-repository head
   type:
     git
   location:
-    https://github.com/wdhg/interlude
+    https://github.com/wdhg/finale
 
 library
   hs-source-dirs:
     src
   exposed-modules:
-    Interlude
+    Finale
   default-language:
     Haskell2010
   ghc-options:
@@ -41,7 +41,7 @@ test-suite test
     -Wall
   build-depends:
     base >= 4.7 && < 5,
-    interlude,
+    finale,
     HUnit
   -- other-modules:
 

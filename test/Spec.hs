@@ -1,4 +1,4 @@
-import Interlude
+import Finale
 import Test.HUnit
 
 getIndexTests :: Test
