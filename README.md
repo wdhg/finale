@@ -1,6 +1,6 @@
-# Interlude
+# Finale
 
-Interlude is a custom extension to the Prelude library of functions that I wish
+Finale is a custom extension to the Prelude library of functions that I wish
 existed in it.
 
 ## Features
