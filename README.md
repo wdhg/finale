@@ -35,3 +35,11 @@ existed in it.
   λ insert "banna" 'a' 3
   "banana"
   ```
+
+- `separate` splits a list of items on a given separator. For example:
+  ```Haskell
+  λ separate "hello my name is" ' '
+  ["hello","my","name","is"]
+  λ separate [1,2,3,0,4,5,6,0,7,8,9] 0
+  [[1,2,3],[4,5,6],[7,8,9]]
+  ```

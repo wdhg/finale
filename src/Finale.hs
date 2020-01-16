@@ -16,3 +16,13 @@ insert items item index
   = before ++ (item : after)
     where
       (before, after) = splitAt index items
+
+separate :: Eq a => [a] -> a -> [[a]]
+separate [] _
+  = [[]]
+separate (item : items) separator
+  | item == separator = [] : remaining
+  | otherwise         = (item : headItems) : tailItems
+    where
+      remaining@(headItems : tailItems)
+        = separate items separator

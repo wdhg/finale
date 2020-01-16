@@ -25,12 +25,20 @@ insertTests
     , insert [0,0] 1 0 ~?= [1,0,0]
     ]
 
+separateTests :: Test
+separateTests
+  = TestList
+    [ separate "a bb ccc dddd" ' ' ~?= ["a","bb","ccc","dddd"]
+    , separate [0,1,0,2,0,3] 0 ~?= [[], [1], [2], [3]]
+    ]
+
 tests :: Test
 tests
   = TestList
     [ "??" ~: getIndexTests
     , "count" ~: countTests
     , "insert" ~: insertTests
+    , "separate" ~: separateTests
     ]
 
 main :: IO Counts
