@@ -17,4 +17,13 @@ existed in it.
   Nothing
   ```
 
+- `count` is a function which counts the occurances of an item in a list. For
+  example:
+  ```Haskell
+  λ [1, 1, 2, 1, 3, 4] `count` 1
+  3
+  λ [1,2,3,4] `count` 5
+  0
+  ```
+
 
