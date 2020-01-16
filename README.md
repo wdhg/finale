@@ -26,4 +26,12 @@ existed in it.
   0
   ```
 
-
+- `insert` inserts an item into a list at a position. For example:
+  ```Haskell
+  λ insert [0,1,2,3,4] 99 3
+  [0,1,2,99,3,4]
+  λ insert [0,0,0] 1 3
+  [0,0,0,1]
+  λ insert "banna" 'a' 3
+  "banana"
+  ```

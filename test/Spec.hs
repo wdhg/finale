@@ -18,11 +18,19 @@ countTests
     , [] `count` 0 ~?= 0
     ]
 
+insertTests :: Test
+insertTests
+  = TestList
+    [ insert [0..3] 99 2 ~?= [0,1,99,2,3]
+    , insert [0,0] 1 0 ~?= [1,0,0]
+    ]
+
 tests :: Test
 tests
   = TestList
     [ "??" ~: getIndexTests
     , "count" ~: countTests
+    , "insert" ~: insertTests
     ]
 
 main :: IO Counts
