@@ -32,6 +32,13 @@ separateTests
     , separate [0,1,0,2,0,3] 0 ~?= [[], [1], [2], [3]]
     ]
 
+joinTests :: Test
+joinTests
+  = TestList
+    [ join ["hello", "my", "name", "is"] ' ' ~?= "hello my name is"
+    , join [[], [1], [2], [3]] 0 ~?= [0,1,0,2,0,3]
+    ]
+
 tests :: Test
 tests
   = TestList
@@ -39,6 +46,7 @@ tests
     , "count" ~: countTests
     , "insert" ~: insertTests
     , "separate" ~: separateTests
+    , "join" ~: joinTests
     ]
 
 main :: IO Counts

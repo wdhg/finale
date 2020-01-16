@@ -26,3 +26,11 @@ separate (item : items) separator
     where
       remaining@(headItems : tailItems)
         = separate items separator
+
+join :: [[a]] -> a -> [a]
+join [] _
+  = []
+join [item] _
+  = item
+join (headItems : tailItems) separator
+  = headItems ++ (separator : join tailItems separator)
