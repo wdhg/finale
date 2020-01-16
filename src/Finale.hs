@@ -34,3 +34,11 @@ join [item] _
   = item
 join (headItems : tailItems) separator
   = headItems ++ (separator : join tailItems separator)
+
+replace :: Eq a => [a] -> a -> a -> [a]
+replace items from to
+  = map replace' items
+    where
+      replace' item
+        | item == from = to
+        | otherwise    = item

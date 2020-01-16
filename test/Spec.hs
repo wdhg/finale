@@ -39,6 +39,13 @@ joinTests
     , join [[], [1], [2], [3]] 0 ~?= [0,1,0,2,0,3]
     ]
 
+replaceTests :: Test
+replaceTests
+  = TestList
+    [ replace "bununu" 'u' 'a' ~?= "banana"
+    , replace [0,1,0,1,0] 0 1 ~?= [1,1,1,1,1]
+    ]
+
 tests :: Test
 tests
   = TestList
