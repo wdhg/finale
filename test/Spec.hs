@@ -10,10 +10,19 @@ getIndexTests
     , [0..10] ?? 20 ~?= Nothing
     ]
 
+countTests :: Test
+countTests
+  = TestList
+    [ [1,1,1,2] `count` 1 ~?= 3
+    , [1,1,1,2] `count` 3 ~?= 0
+    , [] `count` 0 ~?= 0
+    ]
+
 tests :: Test
 tests
   = TestList
     [ "??" ~: getIndexTests
+    , "count" ~: countTests
     ]
 
 main :: IO Counts
