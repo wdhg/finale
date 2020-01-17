@@ -1,5 +1,7 @@
 module Finale where
 
+import Data.List (intersperse)
+
 (??) :: Eq a => [a] -> a -> Maybe Int
 [] ?? _
   = Nothing
@@ -28,12 +30,8 @@ separate (item : items) separator
         = separate items separator
 
 join :: [[a]] -> a -> [a]
-join [] _
-  = []
-join [item] _
-  = item
-join (headItems : tailItems) separator
-  = headItems ++ (separator : join tailItems separator)
+join items separator
+  = concat $ intersperse [separator] items
 
 replace :: Eq a => [a] -> a -> a -> [a]
 replace items from to
