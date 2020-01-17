@@ -42,3 +42,11 @@ replace items from to
       replace' item
         | item == from = to
         | otherwise    = item
+
+mapIf :: (a -> Bool) -> (a -> a) -> [a] -> [a]
+mapIf predicate func items
+  = map mapIf' items
+    where
+      mapIf' item
+        | predicate item = func item
+        | otherwise      = item

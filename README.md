@@ -61,3 +61,12 @@ existed in it.
   λ replace [0,1,2,0,1,2] 0 3
   [3,1,2,3,1,2]
   ```
+
+- `mapIf` maps a function over some items in a list if they satisfy some
+  predicate. For example:
+  ```Haskell
+  λ mapIf even succ [0,1,2,3,4,5]
+  [1,1,3,3,5,5]
+  λ mapIf (== 'u') (const 'a') "bununu"
+  "banana"
+  ```

@@ -46,6 +46,14 @@ replaceTests
     , replace [0,1,0,1,0] 0 1 ~?= [1,1,1,1,1]
     ]
 
+mapIfTests :: Test
+mapIfTests
+  = TestList
+    [ mapIf even succ [0,1,2,3,4] ~?= [1,1,3,3,5]
+    , mapIf (== 'u') (const 'a') "bununu" ~?= "banana"
+    , mapIf even succ [1,3,5,7] ~?= [1,3,5,7]
+    ]
+
 tests :: Test
 tests
   = TestList
