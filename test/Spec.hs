@@ -13,37 +13,37 @@ getIndexTests
 countTests :: Test
 countTests
   = TestList
-    [ [1,1,1,2] `count` 1 ~?= 3
-    , [1,1,1,2] `count` 3 ~?= 0
-    , [] `count` 0 ~?= 0
+    [ count 1 [1,1,1,2] ~?= 3
+    , count 3 [1,1,1,2] ~?= 0
+    , count 0 [] ~?= 0
     ]
 
 insertTests :: Test
 insertTests
   = TestList
-    [ insert [0..3] 99 2 ~?= [0,1,99,2,3]
-    , insert [0,0] 1 0 ~?= [1,0,0]
+    [ insert 2 99 [0..3] ~?= [0,1,99,2,3]
+    , insert 0 1 [0,0] ~?= [1,0,0]
     ]
 
 separateTests :: Test
 separateTests
   = TestList
-    [ separate "a bb ccc dddd" ' ' ~?= ["a","bb","ccc","dddd"]
-    , separate [0,1,0,2,0,3] 0 ~?= [[], [1], [2], [3]]
+    [ separate ' ' "a bb ccc dddd" ~?= ["a","bb","ccc","dddd"]
+    , separate 0 [0,1,0,2,0,3] ~?= [[], [1], [2], [3]]
     ]
 
 joinTests :: Test
 joinTests
   = TestList
-    [ join ["hello", "my", "name", "is"] ' ' ~?= "hello my name is"
-    , join [[], [1], [2], [3]] 0 ~?= [0,1,0,2,0,3]
+    [ join ' ' ["hello", "my", "name", "is"] ~?= "hello my name is"
+    , join 0 [[], [1], [2], [3]] ~?= [0,1,0,2,0,3]
     ]
 
 replaceTests :: Test
 replaceTests
   = TestList
-    [ replace "bununu" 'u' 'a' ~?= "banana"
-    , replace [0,1,0,1,0] 0 1 ~?= [1,1,1,1,1]
+    [ replace 'u' 'a' "bununu" ~?= "banana"
+    , replace 0 1 [0,1,0,1,0] ~?= [1,1,1,1,1]
     ]
 
 mapIfTests :: Test
