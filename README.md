@@ -70,3 +70,12 @@ existed in it.
   λ mapIf (== 'u') (const 'a') "bununu"
   "banana"
   ```
+
+- `sieve` filters a list of items into two lists those that satisfy the
+  predicate, and those that don't. For example:
+  ```Haskell
+  λ sieve even [1..10]
+  ([2,4,6,8,10],[1,3,5,7,9])
+  λ sieve (== 'a') "banana"
+  ("aaa","bnn")
+  ```

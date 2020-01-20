@@ -54,6 +54,13 @@ mapIfTests
     , mapIf even succ [1,3,5,7] ~?= [1,3,5,7]
     ]
 
+sieveTests :: Test
+sieveTests
+  = TestList
+    [ sieve even [1..10] ~?= ([2,4,6,8,10], [1,3,5,7,9])
+    , sieve (== 'a') "banana" ~?= ("aaa", "bnn")
+    ]
+
 tests :: Test
 tests
   = TestList

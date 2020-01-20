@@ -48,3 +48,11 @@ mapIf predicate func items
       mapIf' item
         | predicate item = func item
         | otherwise      = item
+
+sieve :: (a -> Bool) -> [a] -> ([a], [a])
+sieve predicate
+  = foldr sieve' ([], [])
+    where
+      sieve' item (left, right)
+        | predicate item = (item : left, right)
+        | otherwise      = (left, item : right)
