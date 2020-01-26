@@ -26,6 +26,17 @@ existed in it.
   0
   ```
 
+- `setAt` sets the value at a certain point in a list. If the index is too large
+  or small for the list, it throws an error. For example:
+  ```Haskell
+  λ setAt 0 5 [0..10]
+  [5,1,2,3,4,5,6,7,8,9,10]
+  λ setAt 1 'a' "bunana"
+  "banana"
+  λ setAt 4 3 []
+  *** Exception: index too large
+  ```
+
 - `insert` inserts an item into a list at a position. For example:
   ```Haskell
   λ insert 3 99 [0,1,2,3,4]
