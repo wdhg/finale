@@ -18,6 +18,13 @@ countTests
     , count 0 [] ~?= 0
     ]
 
+setAtTests :: Test
+setAtTests
+  = TestList
+    [ setAt 0 5 [0..10] ~?= 5 : [1..10]
+    , setAt 1 'a' "bunana" ~?= "banana"
+    ]
+
 insertTests :: Test
 insertTests
   = TestList
