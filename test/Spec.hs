@@ -76,6 +76,7 @@ tests
     , "insert" ~: insertTests
     , "separate" ~: separateTests
     , "join" ~: joinTests
+    , "sieve" ~: sieveTests
     ]
 
 main :: IO Counts
