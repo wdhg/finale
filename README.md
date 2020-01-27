@@ -90,3 +90,12 @@ existed in it.
   λ sieve (== 'a') "banana"
   ("aaa","bnn")
   ```
+
+- `sublist` gets a sublist (start inclusive, end exclusive) from a list. For
+  example:
+  ```Haskell
+  λ sublist 1 5 "banana"
+  "anan"
+  λ sublist 2 10 [0,1,2,3,5]
+  [2,3,4,5]
+  ```
