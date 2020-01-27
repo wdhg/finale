@@ -65,3 +65,10 @@ sieve predicate
       sieve' item (left, right)
         | predicate item = (item : left, right)
         | otherwise      = (left, item : right)
+
+sublist :: Int -> Int -> [a] -> [a]
+sublist start end items
+  = fst $ splitAt (end - start) excess
+    where
+      (_, excess)
+        = splitAt start items
