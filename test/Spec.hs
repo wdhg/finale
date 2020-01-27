@@ -68,6 +68,15 @@ sieveTests
     , sieve (== 'a') "banana" ~?= ("aaa", "bnn")
     ]
 
+sublistTests :: Test
+sublistTests
+  = TestList
+    [ sublist 0 6 "banana" ~?= "banana"
+    , sublist 1 5 "banana" ~?= "anan"
+    , sublist 5 2 "banana" ~?= ""
+    , sublist 5 20 [0..10] ~?= [5..10]
+    ]
+
 tests :: Test
 tests
   = TestList
@@ -77,6 +86,7 @@ tests
     , "separate" ~: separateTests
     , "join" ~: joinTests
     , "sieve" ~: sieveTests
+    , "sublist" ~: sublistTests
     ]
 
 main :: IO Counts
