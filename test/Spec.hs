@@ -18,25 +18,11 @@ countTests
     , count 0 [] ~?= 0
     ]
 
-setAtTests :: Test
-setAtTests
-  = TestList
-    [ setAt 0 5 [0..10] ~?= 5 : [1..10]
-    , setAt 1 'a' "bunana" ~?= "banana"
-    ]
-
 insertTests :: Test
 insertTests
   = TestList
     [ insert 2 99 [0..3] ~?= [0,1,99,2,3]
     , insert 0 1 [0,0] ~?= [1,0,0]
-    ]
-
-separateTests :: Test
-separateTests
-  = TestList
-    [ separate ' ' "a bb ccc dddd" ~?= ["a","bb","ccc","dddd"]
-    , separate 0 [0,1,0,2,0,3] ~?= [[], [1], [2], [3]]
     ]
 
 joinTests :: Test
@@ -46,6 +32,14 @@ joinTests
     , join 0 [[], [1], [2], [3]] ~?= [0,1,0,2,0,3]
     ]
 
+mapIfTests :: Test
+mapIfTests
+  = TestList
+    [ mapIf even succ [0,1,2,3,4] ~?= [1,1,3,3,5]
+    , mapIf (== 'u') (const 'a') "bununu" ~?= "banana"
+    , mapIf even succ [1,3,5,7] ~?= [1,3,5,7]
+    ]
+
 replaceTests :: Test
 replaceTests
   = TestList
@@ -53,12 +47,18 @@ replaceTests
     , replace 0 1 [0,1,0,1,0] ~?= [1,1,1,1,1]
     ]
 
-mapIfTests :: Test
-mapIfTests
+separateTests :: Test
+separateTests
   = TestList
-    [ mapIf even succ [0,1,2,3,4] ~?= [1,1,3,3,5]
-    , mapIf (== 'u') (const 'a') "bununu" ~?= "banana"
-    , mapIf even succ [1,3,5,7] ~?= [1,3,5,7]
+    [ separate ' ' "a bb ccc dddd" ~?= ["a","bb","ccc","dddd"]
+    , separate 0 [0,1,0,2,0,3] ~?= [[], [1], [2], [3]]
+    ]
+
+setAtTests :: Test
+setAtTests
+  = TestList
+    [ setAt 0 5 [0..10] ~?= 5 : [1..10]
+    , setAt 1 'a' "bunana" ~?= "banana"
     ]
 
 sieveTests :: Test
@@ -83,8 +83,11 @@ tests
     [ "??" ~: getIndexTests
     , "count" ~: countTests
     , "insert" ~: insertTests
-    , "separate" ~: separateTests
     , "join" ~: joinTests
+    , "mapIf" ~: mapIfTests
+    , "replace" ~: replaceTests
+    , "separate" ~: separateTests
+    , "setAt" ~: setAtTests
     , "sieve" ~: sieveTests
     , "sublist" ~: sublistTests
     ]

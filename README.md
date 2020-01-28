@@ -26,17 +26,6 @@ existed in it.
   0
   ```
 
-- `setAt` sets the value at a certain point in a list. If the index is too large
-  or small for the list, it throws an error. For example:
-  ```Haskell
-  λ setAt 0 5 [0..10]
-  [5,1,2,3,4,5,6,7,8,9,10]
-  λ setAt 1 'a' "bunana"
-  "banana"
-  λ setAt 4 3 []
-  *** Exception: index too large
-  ```
-
 - `insert` inserts an item into a list at a position. For example:
   ```Haskell
   λ insert 3 99 [0,1,2,3,4]
@@ -45,14 +34,6 @@ existed in it.
   [0,0,0,1]
   λ insert 3 'a' "banna"
   "banana"
-  ```
-
-- `separate` splits a list of items on a given separator. For example:
-  ```Haskell
-  λ separate ' ' "hello my name is"
-  ["hello","my","name","is"]
-  λ separate 0 [1,2,3,0,4,5,6,0,7,8,9]
-  [[1,2,3],[4,5,6],[7,8,9]]
   ```
 
 - `join` undos a separation by concatenating the split items with a separator.
@@ -64,6 +45,15 @@ existed in it.
   [1,2,3,0,4,5,6,0,7,8,9]
   ```
 
+- `mapIf` maps a function over some items in a list if they satisfy some
+  predicate. For example:
+  ```Haskell
+  λ mapIf even succ [0,1,2,3,4,5]
+  [1,1,3,3,5,5]
+  λ mapIf (== 'u') (const 'a') "bununu"
+  "banana"
+  ```
+
 - `replace` replaces all occurances of an element with another element. For
   example:
   ```Haskell
@@ -73,13 +63,23 @@ existed in it.
   [3,1,2,3,1,2]
   ```
 
-- `mapIf` maps a function over some items in a list if they satisfy some
-  predicate. For example:
+- `separate` splits a list of items on a given separator. For example:
   ```Haskell
-  λ mapIf even succ [0,1,2,3,4,5]
-  [1,1,3,3,5,5]
-  λ mapIf (== 'u') (const 'a') "bununu"
+  λ separate ' ' "hello my name is"
+  ["hello","my","name","is"]
+  λ separate 0 [1,2,3,0,4,5,6,0,7,8,9]
+  [[1,2,3],[4,5,6],[7,8,9]]
+  ```
+
+- `setAt` sets the value at a certain point in a list. If the index is too large
+  or small for the list, it throws an error. For example:
+  ```Haskell
+  λ setAt 0 5 [0..10]
+  [5,1,2,3,4,5,6,7,8,9,10]
+  λ setAt 1 'a' "bunana"
   "banana"
+  λ setAt 4 3 []
+  *** Exception: index too large
   ```
 
 - `sieve` filters a list of items into two lists those that satisfy the

@@ -13,20 +13,31 @@ count :: Eq a => a -> [a] -> Int
 count item items
   = length $ filter (== item) items
 
-setAt :: Int -> a -> [a] -> [a]
-setAt index item items
-  | index >= length items = error "index too large"
-  | index < 0             = error "negative index"
-  | otherwise             = before ++ (item : after)
-    where
-      (before, (_ : after))
-        = splitAt index items
-
 insert :: Int -> a -> [a] -> [a]
 insert index item items
   = before ++ (item : after)
     where
       (before, after) = splitAt index items
+
+join :: a -> [[a]] -> [a]
+join separator items
+  = concat $ intersperse [separator] items
+
+mapIf :: (a -> Bool) -> (a -> a) -> [a] -> [a]
+mapIf predicate func items
+  = map mapIf' items
+    where
+      mapIf' item
+        | predicate item = func item
+        | otherwise      = item
+
+replace :: Eq a => a -> a -> [a] -> [a]
+replace from to items
+  = map replace' items
+    where
+      replace' item
+        | item == from = to
+        | otherwise    = item
 
 separate :: Eq a => a -> [a] -> [[a]]
 separate _ []
@@ -38,25 +49,14 @@ separate separator (item : items)
       remaining@(headItems : tailItems)
         = separate separator items
 
-join :: a -> [[a]] -> [a]
-join separator items
-  = concat $ intersperse [separator] items
-
-replace :: Eq a => a -> a -> [a] -> [a]
-replace from to items
-  = map replace' items
+setAt :: Int -> a -> [a] -> [a]
+setAt index item items
+  | index >= length items = error "index too large"
+  | index < 0             = error "negative index"
+  | otherwise             = before ++ (item : after)
     where
-      replace' item
-        | item == from = to
-        | otherwise    = item
-
-mapIf :: (a -> Bool) -> (a -> a) -> [a] -> [a]
-mapIf predicate func items
-  = map mapIf' items
-    where
-      mapIf' item
-        | predicate item = func item
-        | otherwise      = item
+      (before, (_ : after))
+        = splitAt index items
 
 sieve :: (a -> Bool) -> [a] -> ([a], [a])
 sieve predicate
