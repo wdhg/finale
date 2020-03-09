@@ -72,3 +72,8 @@ sublist start end items
     where
       (_, excess)
         = splitAt start items
+
+applyN :: Int -> (a -> a) -> a -> a
+applyN n func x
+  | n > 0     = applyN (n - 1) func $ func x
+  | otherwise = x
