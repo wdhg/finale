@@ -9,6 +9,11 @@ import Data.List (intersperse)
   | item == search = Just 0
   | otherwise      = succ <$> remaining ?? search
 
+applyN :: Int -> (a -> a) -> a -> a
+applyN n func x
+  | n > 0     = applyN (n - 1) func $ func x
+  | otherwise = x
+
 count :: Eq a => a -> [a] -> Int
 count item items
   = length $ filter (== item) items
@@ -72,8 +77,3 @@ sublist start end items
     where
       (_, excess)
         = splitAt start items
-
-applyN :: Int -> (a -> a) -> a -> a
-applyN n func x
-  | n > 0     = applyN (n - 1) func $ func x
-  | otherwise = x
