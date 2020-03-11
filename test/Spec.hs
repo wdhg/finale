@@ -1,6 +1,14 @@
 import Finale
 import Test.HUnit
 
+applyNTests :: Test
+applyNTests
+  = TestList
+    [ applyN 1 (+1) 2 ~?= 3
+    , applyN 10 (+1) 2 ~?= 12
+    , applyN 2 (++"na") "ba" ~?= "banana"
+    ]
+
 getIndexTests :: Test
 getIndexTests
   = TestList
@@ -80,7 +88,8 @@ sublistTests
 tests :: Test
 tests
   = TestList
-    [ "??" ~: getIndexTests
+    [ "applyN" ~: applyNTests
+    , "??" ~: getIndexTests
     , "count" ~: countTests
     , "insert" ~: insertTests
     , "join" ~: joinTests
