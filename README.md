@@ -17,6 +17,14 @@ existed in it.
   Nothing
   ```
 
+- `applyN` applys a given function n times on a value. For example:
+  ```Haskell
+  λ applyN 10 (+2) 3
+  23
+  λ applyN 2 (++ "na") "ba"
+  "banana"
+  ```
+
 - `count` is a function which counts the occurances of an item in a list. For
   example:
   ```Haskell
