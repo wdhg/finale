@@ -36,6 +36,10 @@ mapIf predicate func items
         | predicate item = func item
         | otherwise      = item
 
+mean :: Fractional a => [a] -> a
+mean values
+  = (sum values) / (fromIntegral $ length values)
+
 replace :: Eq a => a -> a -> [a] -> [a]
 replace from to items
   = map replace' items
