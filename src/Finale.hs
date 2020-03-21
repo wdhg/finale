@@ -18,6 +18,16 @@ count :: Eq a => a -> [a] -> Int
 count item items
   = length $ filter (== item) items
 
+find :: Eq a => [a] -> [a] -> Maybe Int
+find _ []
+  = Nothing
+find pattern items@(_ : remaining)
+  | starting == pattern = Just 0
+  | otherwise           = (1 +) <$> find pattern remaining
+    where
+      starting
+        = take (length pattern) items
+
 insert :: Int -> a -> [a] -> [a]
 insert index item items
   = before ++ (item : after)
