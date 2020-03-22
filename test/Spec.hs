@@ -26,6 +26,17 @@ countTests
     , count 0 [] ~?= 0
     ]
 
+findTests :: Test
+findTests
+  = TestList
+    [ find [0] [0,1,2] ~?= Just 0
+    , find [1,2] [0,1,2] ~?= Just 1
+    , find [2,1] [0,1,2] ~?= Nothing
+    , find [2] [0,1,2] ~?= Just 2
+    , find [2,3] [0,1,2] ~?= Nothing
+    , find [3] [0,1,2] ~?= Nothing
+    ]
+
 insertTests :: Test
 insertTests
   = TestList
