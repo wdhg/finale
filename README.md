@@ -34,6 +34,17 @@ existed in it.
   0
   ```
 
+- `find` searches a list for a pattern and returns a `Maybe` of the first
+  occurance. For example:
+  ```Haskell
+  λ find [3,4,5] [0..10]
+  Just 3
+  λ find [6,5] [0..10]
+  Nothing
+  λ find "an" "banana"
+  Just 1
+  ```
+
 - `insert` inserts an item into a list at a position. For example:
   ```Haskell
   λ insert 3 99 [0,1,2,3,4]
