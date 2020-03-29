@@ -14,6 +14,14 @@ applyN n func x
   | n > 0     = applyN (n - 1) func $ func x
   | otherwise = x
 
+chip :: Eq a => (a -> (b, a)) -> (a -> Bool) -> a -> [b]
+chip process isEndPoint input
+  | isEndPoint remaining = [value]
+  | otherwise            = value : chip process isEndPoint remaining
+    where
+      (value, remaining)
+        = process input
+
 count :: Eq a => a -> [a] -> Int
 count item items
   = length $ filter (== item) items
